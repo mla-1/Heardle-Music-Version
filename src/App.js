@@ -17,7 +17,6 @@ function App() {
       <HowTo trigger={howtopopup} setTrigger={setHowToPopUp}>
         </HowTo>
     </div>
-    
   );
 }
 
