@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+.App{
+  position: absolute;
+  height: 100%;
+  width:100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heading{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+
+}
+#title{
+  margin-left: 43%;
+  margin-right: 30px;
+  font-size: 30px;
+}
+#howtoplay-btn{
+  font-size: 25px;
+}
+
+#StartRoutinePopup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+#StartRoutinePopup-Inner{
+  position: relative; 
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+StartRoutinePopup-Inner{
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }

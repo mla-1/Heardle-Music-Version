@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react'
+import HowTo from './Howto';
+
 
 function App() {
+  const [howtopopup, setHowToPopUp] = useState(false)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='heading'>
+        <p id='title'>UNLIMITED Heardle</p>
+        <button id='howtoplay-btn' onClick={() => setHowToPopUp(true)}>
+        <i class="bi bi-question-circle"></i>
+        </button>
+      </div>
+      <HowTo trigger={howtopopup} setTrigger={setHowToPopUp}>
+        </HowTo>
     </div>
+    
   );
 }
 
