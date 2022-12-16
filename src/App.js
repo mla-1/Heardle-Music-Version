@@ -133,7 +133,7 @@ function App() {
   }
 
   const _playmusicwinning = () => {
-    _playmusic()
+    _playsong()
   }
 
   const _skipcurrent = async () => {
@@ -228,6 +228,7 @@ function App() {
     }
     else{
       setLossPopUp(true)
+      _playmusicwinning()
     }
   }
 
