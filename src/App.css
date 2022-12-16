@@ -45,7 +45,7 @@
 }
 
 .popup{
-  height: 350px;
+  height: 425px;
   width: 50%;
   background: rgb(11, 11, 11);
   position: absolute;
@@ -169,7 +169,7 @@
   border: 0px;
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+200%);
+  transform: translate(-50%,+300%);
 }
 
 #listensbtn:hover{
@@ -228,4 +228,9 @@
   color: white;
   margin-bottom: 18px;
   margin-left: 10px;
+}
+#albumart{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,-20%);
 }

@@ -34,6 +34,11 @@ function App() {
 
   const [songlength, setSongLength] = useState(2000)
 
+  const [songname, setSongName] = useState('')
+
+  const [albumartlink, setAlbumArtLink] = useState('')
+
+  const [songlink, setSongLink] = useState('')
 
   useEffect(() => {
     if(window.location.hash){
@@ -113,7 +118,11 @@ function App() {
     
     //random number between 0 and the length of the playlist
     const random_song = Math.floor(Math.random() * data.tracks.items.length)
-    console.log(random_song)
+    console.log(data.tracks.items[random_song].track.name)
+    console.log(data.tracks.items[random_song].track)
+    setSongLink(data.tracks.items[random_song].track.external_urls.spotify)
+    setAlbumArtLink(data.tracks.items[random_song].track.album.images[1].url)
+    setSongName(data.tracks.items[random_song].track.name)
     console.log(data.tracks.items[random_song].track.uri)
     setCurrentSongId(data.tracks.items[random_song].track.uri)
   }
@@ -121,6 +130,10 @@ function App() {
   const _playmusic = () => {
     _playsong()
     setTimeout(_pauseplayer, songlength)
+  }
+
+  const _playmusicwinning = () => {
+    _playmusic()
   }
 
   const _skipcurrent = async () => {
@@ -204,10 +217,18 @@ function App() {
   //tester function that prints
   //the number of used skips 
   //current div width
-  const showdivs = () => {
-    console.log(accessToken)
-    console.log('song answer',currentsongid)
-    console.log('length',songlength)
+  const validator = () => {
+    const response = document.getElementById('inputbox').value;
+    var score = require('string-score')
+    let answer = score(songname, response,0.3)
+    console.log(answer)
+    if (answer >= 0.85){
+      console.log('win')
+      _playmusicwinning()
+    }
+    else{
+      setLossPopUp(true)
+    }
   }
 
   return (
@@ -243,7 +264,7 @@ function App() {
         <div className='box1'>{numberofdiv[4]}</div>
         <div className='box1'>{numberofdiv[5]}</div>
 
-        <LossPopUp trigger={losspopup} setTrigger={setLossPopUp}>
+        <LossPopUp trigger={losspopup} setTrigger={setLossPopUp} albumart={albumartlink} songlink={songlink}>
         </LossPopUp>
         <div id='musictimeline'>
         <div id='musicbar'></div>
@@ -251,10 +272,10 @@ function App() {
         <button id='musicplaybtn' onClick={() => {_playmusic()}}>
           <i class="bi bi-play-circle"></i>
         </button>
-        <input type="text" name="name" id='inputbox'placeholder=' Know it? Search for the artist / title'/>
+        <input type="text" name="inputbox" id='inputbox'placeholder=' Know it? Search for the artist / title'/>
         <div className='buttons'>
           <button id='skipbtn' onClick={() => {setSkips()}}>Skip</button>
-          <button id='submitbtn' onClick={() => {showdivs()}}>SUBMIT</button>
+          <button id='submitbtn' onClick={() => {validator()}}>SUBMIT</button>
         </div>
       </div>
     </div>
