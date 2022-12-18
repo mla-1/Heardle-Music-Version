@@ -234,3 +234,44 @@
   left: 50%;
   transform: translate(-50%,-20%);
 }
+
+#winningalbumart{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+25%);
+}
+
+#winningsongname{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+850%);
+  color: white;
+}
+
+#encouragingwords{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+650%);
+  color: white;
+  font-size: 25px;
+}
+
+#seconds{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+1250%);
+  color: white;
+}
+
+#listensongbtn{
+  width:200px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color:#1DB954;
+  border-radius: 25px;
+  border: 0px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+700%);
+}

@@ -4,6 +4,7 @@ import HowTo from './Howto';
 import Info from './Info'
 import LossPopUp from './LossPopUp';
 import { Windows, WindowSidebar } from 'react-bootstrap-icons';
+import Winning from './Winning';
 
 function App() {
   //variables used to build the url that allows
@@ -27,6 +28,8 @@ function App() {
   const [numberofdiv, setNumberOfDiv] = useState([])
 
   const [losspopup, setLossPopUp] = useState(false)
+
+  const [winpopup, setWinPopUp] = useState(false)
 
   const [usedskips, setUsedSkips] = useState(0)
 
@@ -225,10 +228,20 @@ function App() {
     if (answer >= 0.85){
       console.log('win')
       _playmusicwinning()
+      setWinPopUp(true)
     }
     else{
-      setLossPopUp(true)
-      _playmusicwinning()
+      if (usedskips <= 5) {
+        setUsedSkips(usedskips + 1)
+        const word = response
+        const array = [...numberofdiv,word]
+        setNumberOfDiv(array)
+      }
+      else{
+        setLossPopUp(true)
+        _playmusicwinning()
+        //console.log("You have run out of tries!")
+      }
     }
   }
 
@@ -267,6 +280,8 @@ function App() {
 
         <LossPopUp trigger={losspopup} setTrigger={setLossPopUp} albumart={albumartlink} songlink={songlink}>
         </LossPopUp>
+
+        <Winning trigger={winpopup} setTrigger={setWinPopUp} albumart={albumartlink} songlink={songlink} songname={songname} seconds={songlength}></Winning>
         <div id='musictimeline'>
         <div id='musicbar'></div>
         </div>
