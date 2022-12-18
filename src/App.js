@@ -212,6 +212,7 @@ function App() {
       setNumberOfDiv(array)
     }
     else{
+      _playmusicwinning()
       setLossPopUp(true)
       //console.log("You have run out of tries!")
     }
@@ -240,7 +241,6 @@ function App() {
       else{
         setLossPopUp(true)
         _playmusicwinning()
-        //console.log("You have run out of tries!")
       }
     }
   }
