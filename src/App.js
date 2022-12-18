@@ -146,31 +146,6 @@ function App() {
     _playsong()
   }
 
-  const _skipcurrent = async () => {
-    const next = await fetch('https://api.spotify.com/v1/me/player/next', {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + accessToken
-      }
-    })
-    const result = await next.json()
-    console.log(result)
-  }
-  //adds the randomly selectd songid to the current queue
-  const _additemtoqueue = async () => {
-    const trackid = currentsongid.replaceAll(":", '%3A')
-    console.log(trackid)
-    const queue = await fetch('https://api.spotify.com/v1/me/player/queue?uri=' + trackid ,{
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + accessToken
-      }
-    })
-    const result = await queue.json();
-  }
-
   //updates the current div width depending on the current amount of 
   //used skips
   useEffect(() => {
