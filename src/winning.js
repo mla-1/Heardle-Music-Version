@@ -9,6 +9,8 @@ const Winning = (props) => {
                         <img src = {props.albumart} width='150' height='150' id='winningalbumart'/>
                         <p id="winningsongname">{props.songname}</p>
                         <p id='encouragingwords'>An Act of Genius!</p>
+                        <p id='artist'>{props.artist}</p>
+                        <p id='winningyear'>{props.year}</p>
                         <p id="seconds">You got today's Heardle within {props.seconds/1000} seconds.</p>
                         <a href={props.songlink}>
                             <button id='listensongbtn'>Listen on Spotify</button>

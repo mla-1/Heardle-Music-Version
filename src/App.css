@@ -45,7 +45,7 @@
 }
 
 .popup{
-  height: 425px;
+  height: 475px;
   width: 50%;
   background: rgb(11, 11, 11);
   position: absolute;
@@ -169,7 +169,7 @@
   border: 0px;
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+300%);
+  transform: translate(-50%,+450%);
 }
 
 #listensbtn:hover{
@@ -238,20 +238,21 @@
 #winningalbumart{
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+25%);
+  transform: translate(-50%,+20%);
 }
 
 #winningsongname{
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+850%);
+  transform: translate(-50%,+625%);
   color: white;
+  font-size: 20px;
 }
 
 #encouragingwords{
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+650%);
+  transform: translate(-50%,+700%);
   color: white;
   font-size: 25px;
 }
@@ -259,8 +260,8 @@
 #seconds{
   position: fixed;
   left: 50%;
-  transform: translate(-50%,+1250%);
-  color: white;
+  transform: translate(-50%,+1275%);
+  color: rgb(107, 107, 107);
 }
 
 #listensongbtn{
@@ -274,4 +275,41 @@
   position: fixed;
   left: 50%;
   transform: translate(-50%,+700%);
+}
+#artist{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+880%);
+  color: rgb(107, 107, 107);
+}
+
+#winningyear{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+1030%);
+  color: rgb(107, 107, 107);
+  font-size: 15px;
+}
+#losingsongname{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+450%);
+  color: white;
+  font-size: 20px;
+}
+
+#losingartist{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+550%);
+  color: rgb(107, 107, 107);
+  font-size: 20px;
+}
+
+#losingyear{
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%,+625%);
+  color: rgb(107, 107, 107);
+  font-size: 20px;
 }

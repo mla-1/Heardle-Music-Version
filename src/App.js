@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import HowTo from './Howto';
 import Info from './Info'
 import LossPopUp from './LossPopUp';
-import { Windows, WindowSidebar } from 'react-bootstrap-icons';
 import Winning from './Winning';
 
 function App() {
@@ -42,6 +41,10 @@ function App() {
   const [albumartlink, setAlbumArtLink] = useState('')
 
   const [songlink, setSongLink] = useState('')
+
+  const [artist, setArtist] = useState('')
+  
+  const [year, setYear] = useState()
 
   useEffect(() => {
     if(window.location.hash){
@@ -122,12 +125,16 @@ function App() {
     //random number between 0 and the length of the playlist
     const random_song = Math.floor(Math.random() * data.tracks.items.length)
     console.log(data.tracks.items[random_song].track.name)
-    console.log(data.tracks.items[random_song].track)
     setSongLink(data.tracks.items[random_song].track.external_urls.spotify)
     setAlbumArtLink(data.tracks.items[random_song].track.album.images[1].url)
     setSongName(data.tracks.items[random_song].track.name)
-    console.log(data.tracks.items[random_song].track.uri)
     setCurrentSongId(data.tracks.items[random_song].track.uri)
+
+    var date = data.tracks.items[random_song].track.album.release_date
+    date = date.split('-')
+
+    setYear(date[0])
+    setArtist(data.tracks.items[random_song].track.artists[0].name)
   }
 
   const _playmusic = () => {
@@ -170,6 +177,7 @@ function App() {
     if(usedskips === 6){
       //console.log('DONE')
       setLossPopUp(true)
+      _playmusicwinning()
     }
     else if(usedskips === 1){
       setDivWidth(75)
@@ -238,10 +246,6 @@ function App() {
         const array = [...numberofdiv,word]
         setNumberOfDiv(array)
       }
-      else{
-        setLossPopUp(true)
-        _playmusicwinning()
-      }
     }
   }
 
@@ -278,10 +282,10 @@ function App() {
         <div className='box1'>{numberofdiv[4]}</div>
         <div className='box1'>{numberofdiv[5]}</div>
 
-        <LossPopUp trigger={losspopup} setTrigger={setLossPopUp} albumart={albumartlink} songlink={songlink}>
+        <LossPopUp trigger={losspopup} setTrigger={setLossPopUp} albumart={albumartlink} songlink={songlink} year={year} artist={artist} songname={songname}>
         </LossPopUp>
 
-        <Winning trigger={winpopup} setTrigger={setWinPopUp} albumart={albumartlink} songlink={songlink} songname={songname} seconds={songlength}></Winning>
+        <Winning trigger={winpopup} setTrigger={setWinPopUp} albumart={albumartlink} songlink={songlink} songname={songname} seconds={songlength} year={year} artist={artist}></Winning>
         <div id='musictimeline'>
         <div id='musicbar'></div>
         </div>
