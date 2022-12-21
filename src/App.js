@@ -15,35 +15,49 @@ function App() {
   const SCOPES_DELIM = "%20"
   const SCOPES_URL = SCOPES.join(SCOPES_DELIM)
 
-
+  //access token used for authentication in api calls
   const [accessToken, setAccessToken] = useState('')
 
+  //id of the current guessing song
   const [currentsongid, setCurrentSongId] = useState('')
 
+  //boolean for handling the how-to-play popup
   const [howtopopup, setHowToPopUp] = useState(false)
 
+  //boolean for controlling the info popup
   const [infopopup, setInfoPopUp] = useState(false)
 
+  //handles the divs that display skips, and wrong answers
   const [numberofdiv, setNumberOfDiv] = useState([])
 
+  //boolean for controlling the loss popup
   const [losspopup, setLossPopUp] = useState(false)
 
+  //boolean for controlling the win popup
   const [winpopup, setWinPopUp] = useState(false)
 
+  //int for keeping track of the amount of skips used
   const [usedskips, setUsedSkips] = useState(0)
 
+  //controls the current div size that represents the progress bar
   const [divwidth, setDivWidth] = useState(37.5)
 
+  //represents the song length in milliseconds
   const [songlength, setSongLength] = useState(2000)
 
+  //variable used to hold the current song name
   const [songname, setSongName] = useState('')
 
+  //variable used to hold the link to the current song's album art
   const [albumartlink, setAlbumArtLink] = useState('')
 
+  //holds the link for the current song
   const [songlink, setSongLink] = useState('')
 
+  //holds the name of the artist of the current song
   const [artist, setArtist] = useState('')
   
+  //year of the song
   const [year, setYear] = useState()
 
   useEffect(() => {
@@ -137,11 +151,13 @@ function App() {
     setArtist(data.tracks.items[random_song].track.artists[0].name)
   }
 
+  //plays song depending on the current guessing duration
   const _playmusic = () => {
     _playsong()
     setTimeout(_pauseplayer, songlength)
   }
 
+  //plays song without a time limit
   const _playmusicwinning = () => {
     _playsong()
   }
@@ -197,7 +213,6 @@ function App() {
     else{
       _playmusicwinning()
       setLossPopUp(true)
-      //console.log("You have run out of tries!")
     }
   }
 
