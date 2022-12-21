@@ -56,10 +56,12 @@ function App() {
 
   //holds the name of the artist of the current song
   const [artist, setArtist] = useState('')
-  
+
   //year of the song
   const [year, setYear] = useState()
 
+  //use effect that runs once in order to check whether the token has been obtained 
+  //and is in the window url
   useEffect(() => {
     if(window.location.hash){
       gettoken(window.location.hash)
@@ -71,14 +73,6 @@ function App() {
   useEffect(() => {
     _getplaylist()
   },[accessToken])
-
-  //if the current song id is changed then we add it to the 
-  //useEffect(()=> {
-    //_playsong()
-
-    //setTimeout(_pauseplayer, songlength)
-
-  //},[currentsongid])
 
   //creates a url that prompts the user to
   //allow access to their account
@@ -201,7 +195,7 @@ function App() {
   //if a skip is initiated
   //this function is called and it appends the skipped array
   //if more than 5 skips are used then it initiates the 
-  //game over popup
+  //game over popup and plays the current song in it's entirety
 
   const setSkips = () => {
     if (usedskips <= 5) {
