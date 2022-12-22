@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 const Options = (props) => {
 
     //cleans the link from the user
@@ -8,10 +10,14 @@ const Options = (props) => {
         link = link[1]
         props.setPlaylistLink(link)
     }
+    useEffect(() => {
+        console.log('link is',props.playlistlink)
+        _getnewplaylist(props.playlistlink)
+    },[props.playlistlink])
+
 
     //api call that calls and sets the states with the new playlist link
-    const _getnewplaylist = async () => {
-        let link = props.playlistlink
+    const _getnewplaylist = async (link) => {
 
         const result = await fetch('https://api.spotify.com/v1/playlists/' + link, {
           method: 'GET',
