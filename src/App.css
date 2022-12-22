@@ -313,3 +313,48 @@
   color: rgb(107, 107, 107);
   font-size: 20px;
 }
+
+#options-btn{
+  font-size: 25px;
+  border: 0px;
+  background-color: rgb(11, 11, 11);
+  color: white;
+  margin-bottom: 18px;
+  margin-right: 10px;
+}
+
+#playlist-heading{
+  text-align: center;
+  color: white;
+  margin-top: 150px;
+}
+
+#inputlink{
+  width: 300px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+#inputforlink{
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#playlistlink-btn{
+  width:130px;
+  height: 45px;
+  font-size: 20px;
+  background-color:#1DB954;
+  border-radius: 25px;
+  border: 0px;
+}
+
+#playlistlink-btn-div{
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -4,6 +4,7 @@ import HowTo from './Howto';
 import Info from './Info'
 import LossPopUp from './LossPopUp';
 import Winning from './Winning';
+import Options from './Options';
 
 function App() {
   //variables used to build the url that allows
@@ -59,6 +60,11 @@ function App() {
 
   //year of the song
   const [year, setYear] = useState()
+
+  //boolean for options popup
+  const [options, setOptions] = useState(false)
+
+  const [playlistlink, setPlaylistLink] = useState()
 
   //use effect that runs once in order to check whether the token has been obtained 
   //and is in the window url
@@ -121,7 +127,10 @@ function App() {
   //fetches the default playlist from the api
   //which is the top 50 usa playlist made by spotify
   const _getplaylist = async () => {
-    const result = await fetch('https://api.spotify.com/v1/playlists/37i9dQZEVXbLRQDuF5jeBp',{
+
+    let link = '37i9dQZEVXbLRQDuF5jeBp'
+
+    const result = await fetch('https://api.spotify.com/v1/playlists/' + link, {
       method: 'GET',
       headers: {
         'Content-Type' : 'application/json',
@@ -147,8 +156,10 @@ function App() {
 
   //plays song depending on the current guessing duration
   const _playmusic = () => {
+    console.log(currentsongid)
     _playsong()
     setTimeout(_pauseplayer, songlength)
+    console.log(playlistlink)
   }
 
   //plays song without a time limit
@@ -238,6 +249,10 @@ function App() {
       <div className="App">
         <div className='heading'>
 
+          <button id='options-btn' onClick={() => setOptions(true)}>
+          <i class="bi bi-gear"></i>
+          </button>
+
           <button id='howtoplay-btn' onClick={() => setHowToPopUp(true)}>
           <i class="bi bi-question-circle"></i>
           </button>
@@ -269,7 +284,12 @@ function App() {
         <LossPopUp trigger={losspopup} setTrigger={setLossPopUp} albumart={albumartlink} songlink={songlink} year={year} artist={artist} songname={songname}>
         </LossPopUp>
 
-        <Winning trigger={winpopup} setTrigger={setWinPopUp} albumart={albumartlink} songlink={songlink} songname={songname} seconds={songlength} year={year} artist={artist}></Winning>
+        <Winning trigger={winpopup} setTrigger={setWinPopUp} albumart={albumartlink} songlink={songlink} songname={songname} seconds={songlength} year={year} artist={artist}>
+        </Winning>
+
+        <Options trigger={options} setTrigger={setOptions} playlistlink={playlistlink} setPlaylistLink={setPlaylistLink} accessToken={accessToken} setSongLink={setSongLink} setAlbumArtLink={setAlbumArtLink} setSongName={setSongName} setCurrentSongId={setCurrentSongId} setYear={setYear} setArtist={setArtist}>
+
+        </Options>
         <div id='musictimeline'>
         <div id='musicbar'></div>
         </div>
