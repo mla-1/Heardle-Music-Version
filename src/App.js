@@ -11,7 +11,7 @@ function App() {
   //for user authenication
   const CLIENT_ID = '003a9ac0f77b4fdfacc4d15a47209731'
   const AUTH_POINT = 'https://accounts.spotify.com/authorize'
-  const REDIRECT_URI = 'http://localhost:3000/'
+  const REDIRECT_URI = 'https://heardle.onrender.com/'
   const SCOPES = ["user-read-playback-state","user-modify-playback-state","user-read-currently-playing","app-remote-control","streaming"]
   const SCOPES_DELIM = "%20"
   const SCOPES_URL = SCOPES.join(SCOPES_DELIM)
